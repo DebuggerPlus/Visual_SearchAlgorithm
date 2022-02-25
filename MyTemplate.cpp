@@ -12,12 +12,13 @@ void main()
 	Init(arr, size);
 
 	// MassOutPut(arr, 0, size - 1);
-	MazeOutPut(arr, key, size);
+	MazeOutPut(arr, key, size,20,5);
 
 	// Color();
 
 	// cout << "Key = " << key << endl;
 	// cout << "iKey = " << Search(arr, size, key) << endl;
 
+	 // VisualOutPut(arr, size, 10, 5);
 
 }
