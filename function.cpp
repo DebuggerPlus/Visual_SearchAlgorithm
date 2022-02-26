@@ -15,9 +15,9 @@ void Init(int* arr, const int size)
 void MazeOutPut(int* arr, int key, const int size, int x,int y) {
 
 	VisualOutPut(arr, size, x, y);
-
 	int* iKeys = new int[size];
 	int qKeys = 0;
+	int matches = 0;
 
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 		// скрыть курсор
@@ -51,6 +51,7 @@ void MazeOutPut(int* arr, int key, const int size, int x,int y) {
 		iKey.Y = ckey.Y - 8;
 		SetConsoleCursorPosition(h, ckey);
 		if (arr[i] == key) {
+			matches++;
 			iKeys[qKeys] = i;
 			qKeys++;
 
@@ -104,17 +105,26 @@ void MazeOutPut(int* arr, int key, const int size, int x,int y) {
 
 
 	coord_arr.X = 0;
-	coord_arr.Y = 8;
+	coord_arr.Y = 5;
 		SetConsoleCursorPosition(h, coord_arr);
 
-		for (int i = 0; i < qKeys; i++) {
-			cout << "iKeys[" << i << "] = ";
-			SetConsoleTextAttribute(h, index_color);
-			cout << iKeys[i] << endl;
-			SetConsoleTextAttribute(h, WHITE);
+		if (matches > 1) {
 
-
+			cout << matches << " matches" << endl << endl;
+			for (int i = 0; i < qKeys; i++) {
+				cout << "iKeys[" << i << "] = ";
+				SetConsoleTextAttribute(h, index_color);
+				cout << iKeys[i] << endl;
+				SetConsoleTextAttribute(h, WHITE);
+			}
 		}
+		else if (matches == 1) {
+			cout << "iKey = ";
+			SetConsoleTextAttribute(h, index_color);
+			cout << iKeys[0] << endl;
+			SetConsoleTextAttribute(h, WHITE);
+		}
+			else cout << "No matches!" << endl;
 			
 
 		Start.X = 0;

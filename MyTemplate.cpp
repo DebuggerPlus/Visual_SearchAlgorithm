@@ -1,24 +1,29 @@
-﻿// MyTemplate
+﻿// debuggerplus.com
 #include <iostream>
 #include "Header.h"
-// #include<windows.h>
+#include<windows.h>
+#include<conio.h>
 using namespace std;
 
 void main()
 {
+	system("pause");
+	system("cls");
 	const int size = 10;
 	int arr[size] = { 0 };
 	int key = 4;
-	Init(arr, size);
+	srand(time(0));
+	int direct = 0;
 
-	// MassOutPut(arr, 0, size - 1);
-	MazeOutPut(arr, key, size,20,5);
+	do {
+		Init(arr, size);
 
-	// Color();
+		MazeOutPut(arr, key, size, 20, 5);
 
-	// cout << "Key = " << key << endl;
-	// cout << "iKey = " << Search(arr, size, key) << endl;
-
-	 // VisualOutPut(arr, size, 10, 5);
-
+		cout << "Press any key for repeat! Esc for exit!";
+		direct = _getch();
+		Sleep(1000);
+		system("cls");
+	} while (direct!=27);
+	
 }
